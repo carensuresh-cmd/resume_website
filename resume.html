@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Caren Ann Suresh</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --cream: #F7F3EE;
+      --ink: #1A1714;
+      --accent: #C4622D;
+      --muted: #8A7F78;
+      --light-line: #E2DBD4;
+      --card-bg: #FDFAF7;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 4rem;
+      background: rgba(247, 243, 238, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--light-line);
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.03em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      gap: 4rem;
+      position: relative;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1.hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+
+    h1.hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      max-width: 420px;
+      line-height: 1.8;
+    }
+
+    .hero-contacts {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-contacts a {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .hero-contacts a:hover { color: var(--accent); border-color: var(--accent); }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-self: flex-end;
+      padding-bottom: 3rem;
+    }
+
+    .hero-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .hero-stat {
+      border-top: 1px solid var(--light-line);
+      padding-top: 1rem;
+    }
+
+    .hero-stat .num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.2rem;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .hero-stat .label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: 6rem 4rem;
+      border-top: 1px solid var(--light-line);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .section-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--light-line);
+      margin-left: 1rem;
+    }
+
+    /* ── ABOUT ── */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-side-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .about-intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+
+    .about-body {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .about-body p + p { margin-top: 1.2rem; }
+
+    /* ── EXPERIENCE ── */
+    #experience .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 3rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--light-line);
+      transition: background 0.2s;
+      position: relative;
+    }
+
+    .exp-item:first-child { border-top: 1px solid var(--light-line); }
+
+    .exp-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      padding-top: 0.15rem;
+    }
+
+    .exp-date {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .exp-company {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--ink);
+    }
+
+    .exp-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.7rem;
+      border: 1px solid var(--light-line);
+      color: var(--muted);
+      border-radius: 20px;
+      width: fit-content;
+      margin-top: 0.3rem;
+    }
+
+    .exp-content {}
+
+    .exp-role {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .exp-bullets li {
+      font-size: 0.88rem;
+      color: var(--muted);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .exp-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+
+    /* ── EDUCATION ── */
+    #education .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .edu-card {
+      background: var(--card-bg);
+      border: 1px solid var(--light-line);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .edu-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(26,23,20,0.07);
+    }
+
+    .edu-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 0;
+      background: var(--accent);
+      transition: height 0.4s;
+    }
+
+    .edu-card:hover::before { height: 100%; }
+
+    .edu-year {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .edu-school {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .edu-degree {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .edu-score {
+      display: inline-block;
+      margin-top: 1.2rem;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: var(--ink);
+    }
+
+    /* ── SKILLS ── */
+    #skills .skills-wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem 6rem;
+    }
+
+    .skill-group {}
+
+    .skill-group-name {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .pill {
+      font-size: 0.8rem;
+      padding: 0.45rem 1.1rem;
+      border: 1px solid var(--light-line);
+      color: var(--ink);
+      background: var(--card-bg);
+      letter-spacing: 0.02em;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .pill:hover {
+      background: var(--ink);
+      color: var(--cream);
+      border-color: var(--ink);
+    }
+
+    /* ── PROJECTS ── */
+    #projects .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .proj-card {
+      border: 1px solid var(--light-line);
+      padding: 2.2rem;
+      background: var(--card-bg);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .proj-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(26,23,20,0.08);
+    }
+
+    .proj-card-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--light-line);
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .proj-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 0.8rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .proj-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 3rem 4rem;
+      border-top: 1px solid var(--light-line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+
+      #hero {
+        grid-template-columns: 1fr;
+        padding: 7rem 1.5rem 3rem;
+        gap: 3rem;
+      }
+
+      .hero-right { align-self: auto; padding-bottom: 0; }
+
+      section { padding: 4rem 1.5rem; }
+
+      #about .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      .exp-item { grid-template-columns: 1fr; gap: 0.8rem; }
+
+      #education .edu-grid { grid-template-columns: 1fr; }
+
+      #skills .skills-wrapper { grid-template-columns: 1fr; gap: 2rem; }
+
+      #projects .proj-grid { grid-template-columns: 1fr; }
+
+      footer { flex-direction: column; gap: 0.8rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#hero">Caren Ann Suresh</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-left">
+      <span class="hero-tag">Portfolio · 2025</span>
+      <h1 class="hero-name">Caren Ann<br/><em>Suresh</em></h1>
+      <p class="hero-desc">Storyteller with a strategy mindset and entrepreneurial spirit.</p>
+      <div class="hero-contacts">
+        <a href="tel:+917012188402">+91 70121 88402</a>
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        <a href="/cdn-cgi/l/email-protection#bd">Email</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stat-grid">
+        <div class="hero-stat">
+          <div class="num">6+</div>
+          <div class="label">Internships & Roles</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">3+</div>
+          <div class="label">Years of Experience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-header reveal">
+      <span class="section-num">01</span>
+      <h2 class="section-title">About Me</h2>
+      <span class="section-line"></span>
+    </div>
+    <div class="about-grid reveal">
+      <div>
+        <p class="about-side-label">Who I am</p>
+        <p class="about-intro">Strategy. Storytelling. Execution.</p>
+      </div>
+      <div class="about-body">
+        <p>I'm Caren, a Business and Technology Management student at Masters' Union, Gurugram, passionate about the intersection of strategy, content, and entrepreneurship.</p>
+        <p>From co-founding a D2C jewellery brand that crossed ₹1,00,000 in revenue in two months, to driving content strategy for fast-growing startups, I thrive at the crossroads of ideas and action.</p>
+        <p>I'm a natural communicator, whether through writing, presenting, or building, and I bring a creative yet analytical lens to everything I do.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-header reveal">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Experience</h2>
+      <span class="section-line"></span>
+    </div>
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <span class="exp-date">May '24 – Jul '24</span>
+          <span class="exp-company">The Indian Express</span>
+          <span class="exp-tag">Noida</span>
+        </div>
+        <div class="exp-content">
+          <h3 class="exp-role">Business Strategy Intern</h3>
+          <ul class="exp-bullets">
+            <li>Improved cold outreach response rate, contributing to increased ad revenue.</li>
+            <li>Conducted market research to identify potential revenue streams and growth opportunities.</li>
+            <li>Proposed strategies for 10+ events and aligned CRM data with the Annual Operating Plan.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <span class="exp-date">Mar '24 – May '24</span>
+          <span class="exp-company">InterviewClub</span>
+          <span class="exp-tag">Gurugram</span>
+        </div>
+        <div class="exp-content">
+          <h3 class="exp-role">Content Strategist Intern</h3>
+          <ul class="exp-bullets">
+            <li>Created 25+ blogs, boosting engagement and driving 10,000+ impressions.</li>
+            <li>Improved website content, increasing user retention.</li>
+            <li>Structured content for the PM book, incorporating 10+ expert interviews.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <span class="exp-date">Nov '23 – Feb '24</span>
+          <span class="exp-company">Elara</span>
+          <span class="exp-tag">D2C · Gurugram</span>
+        </div>
+        <div class="exp-content">
+          <h3 class="exp-role">Co-Founder</h3>
+          <ul class="exp-bullets">
+            <li>Generated ₹1,00,000+ in revenue in just 2 months.</li>
+            <li>Ranked among the Top 10 teams (out of 25+) of the Dropshipping Challenge.</li>
+            <li>Curated content for 50+ product descriptions, increasing SEO traffic by 40%.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <span class="exp-date">Jan '24 – Feb '24</span>
+          <span class="exp-company">Millet Startup</span>
+          <span class="exp-tag">Startup · Consulting</span>
+        </div>
+        <div class="exp-content">
+          <h3 class="exp-role">Market Research &amp; Strategy Intern</h3>
+          <ul class="exp-bullets">
+            <li>Defined and validated the ideal customer persona for the brand's product launch.</li>
+            <li>Conducted in-depth market research to inform go-to-market positioning and targeting strategy.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <span class="exp-date">Jul '24 – Sep '24</span>
+          <span class="exp-company">LinkedIn Ghostwriting</span>
+          <span class="exp-tag">Freelance</span>
+        </div>
+        <div class="exp-content">
+          <h3 class="exp-role">Ghostwriter &amp; Account Manager</h3>
+          <ul class="exp-bullets">
+            <li>Managed and grew LinkedIn accounts for clients across real estate, media, and healthcare industries.</li>
+            <li>Crafted high-performing thought-leadership content tailored to each client's voice and audience.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <span class="exp-date">Ongoing</span>
+          <span class="exp-company">Content Creator</span>
+          <span class="exp-tag">Digital · Social Media</span>
+        </div>
+        <div class="exp-content">
+          <h3 class="exp-role">Content Creator</h3>
+          <ul class="exp-bullets">
+            <li>Runs two channels, with one account crossing over 9 million views in just a month.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <span class="exp-date">Ongoing</span>
+          <span class="exp-company">Freelance</span>
+          <span class="exp-tag">Content · Strategy</span>
+        </div>
+        <div class="exp-content">
+          <h3 class="exp-role">SEO Writer &amp; Deck Designer</h3>
+          <ul class="exp-bullets">
+            <li>Authored SEO-optimised blogs for multiple websites across diverse industries.</li>
+            <li>Designed pitch decks, presentations, and strategic documents for clients and startups.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-header reveal">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Education</h2>
+      <span class="section-line"></span>
+    </div>
+    <div class="edu-grid">
+
+      <div class="edu-card reveal">
+        <div class="edu-year">2025 – 2028</div>
+        <h3 class="edu-school">IIM Bangalore</h3>
+        <p class="edu-degree">Digital Business and Entrepreneurship</p>
+      </div>
+
+      <div class="edu-card reveal">
+        <div class="edu-year">2023 – 2027</div>
+        <h3 class="edu-school">Masters' Union</h3>
+        <p class="edu-degree">Undergraduate Programme in Technology &amp; Business Management · Gurugram</p>
+      </div>
+
+      <div class="edu-card reveal">
+        <div class="edu-year">2021 – 2023</div>
+        <h3 class="edu-school">Indian Education School</h3>
+        <p class="edu-degree">Commerce with Informatics Practices · CBSE · Kuwait</p>
+        <span class="edu-score">93.4%</span>
+        <p class="edu-degree" style="margin-top:0.4rem;">English Course Topper · 100/100</p>
+      </div>
+
+      <div class="edu-card reveal">
+        <div class="edu-year">2016 – 2020</div>
+        <h3 class="edu-school">Smart Indian School</h3>
+        <p class="edu-degree">Class 10th · Kuwait</p>
+        <span class="edu-score">90%</span>
+        <p class="edu-degree" style="margin-top:0.4rem;">Head Girl</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-header reveal">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Skills</h2>
+      <span class="section-line"></span>
+    </div>
+    <div class="skills-wrapper">
+
+      <div class="skill-group reveal">
+        <p class="skill-group-name">Strategy & Business</p>
+        <div class="skill-pills">
+          <span class="pill">Business Strategy</span>
+          <span class="pill">Market Research</span>
+          <span class="pill">CRM Analysis</span>
+          <span class="pill">Financial Valuation</span>
+          <span class="pill">Go-to-Market</span>
+          <span class="pill">Customer Persona</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <p class="skill-group-name">Content & Writing</p>
+        <div class="skill-pills">
+          <span class="pill">SEO Writing</span>
+          <span class="pill">Ghostwriting</span>
+          <span class="pill">Copywriting</span>
+          <span class="pill">Blog Strategy</span>
+          <span class="pill">Storytelling</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <p class="skill-group-name">Marketing & Growth</p>
+        <div class="skill-pills">
+          <span class="pill">LinkedIn Marketing</span>
+          <span class="pill">Cold Outreach</span>
+          <span class="pill">Brand Building</span>
+          <span class="pill">Event Strategy</span>
+          <span class="pill">D2C</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <p class="skill-group-name">Creative & Communication</p>
+        <div class="skill-pills">
+          <span class="pill">Deck Design</span>
+          <span class="pill">Editorial Design</span>
+          <span class="pill">Public Speaking</span>
+          <span class="pill">Fine Arts</span>
+          <span class="pill">MUN</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-header reveal">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Live Projects</h2>
+      <span class="section-line"></span>
+    </div>
+    <div class="proj-grid">
+
+      <div class="proj-card reveal">
+        <span class="proj-card-num">01</span>
+        <h3 class="proj-title">Tata Motors EV — Strategy Project</h3>
+        <p class="proj-desc">Analysed the EV segment to identify growth opportunities and delivered actionable strategic insights to strengthen Tata Motors' market position.</p>
+      </div>
+
+      <div class="proj-card reveal">
+        <span class="proj-card-num">02</span>
+        <h3 class="proj-title">Tata Motors — Financial Valuation</h3>
+        <p class="proj-desc">Valued Tata Motors using DCF, football field, trading comparables, and transaction comparables models. Provided strategic recommendations based on valuation findings.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-name">Caren Ann Suresh</span>
+    <span class="footer-copy">© 2025 · Crafted with intention</span>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    document.querySelectorAll('.exp-list .exp-item, .edu-grid .edu-card, .proj-grid .proj-card').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.07}s`;
+    });
+  </script>
+</body>
+</html>
